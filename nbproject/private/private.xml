@@ -3,8 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/maintenance_user/application/config/autoload.php</file>
-            <file>file:/C:/xampp/htdocs/maintenance_user/application/config/asset.php</file>
+            <file>file:/Applications/XAMPP/htdocs/maintenance_user/application/models/LoginModel.php</file>
+            <file>file:/Applications/XAMPP/htdocs/maintenance_user/application/controllers/login.php</file>
+            <file>file:/Applications/XAMPP/htdocs/maintenance_user/application/views/theme/theme_user_footer.php</file>
+            <file>file:/Applications/XAMPP/htdocs/maintenance_user/application/views/login_view.php</file>
+            <file>file:/Applications/XAMPP/htdocs/maintenance_user/application/views/theme/theme_user_header.php</file>
+            <file>file:/Applications/XAMPP/htdocs/maintenance_user/application/controllers/home.php</file>
+            <file>file:/Applications/XAMPP/htdocs/maintenance_user/assets/css/signin.css</file>
+            <file>file:/Applications/XAMPP/htdocs/maintenance_user/application/config/config.php</file>
         </group>
     </open-files>
 </project-private>

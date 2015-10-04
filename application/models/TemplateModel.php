@@ -2,7 +2,7 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 Class TemplateModel extends CI_Model {
-    private $title = '------';
+    private $title = 'KW Smart App';
     private $view_name = NULL;
     private $real_alert = NULL;
     private $set_data = NULL;
@@ -44,8 +44,10 @@ Class TemplateModel extends CI_Model {
         }
         //Load version for Cache CSS and JS
         $data['version'] = $this->version;
+        
         //--- Redirect to current page ---//
         $data['page'] = $this->uri->segment(1);
+        
         //--- Alert System ---//
         $data['alert'] = $this->session->userdata('alert');
         $this->session->unset_userdata('alert');
@@ -56,8 +58,13 @@ Class TemplateModel extends CI_Model {
         $data['alert'] = $this->check_Alert();
         $data['real_alert'] = $this->check_RealAlert();
         
-        $this->load->view('themetheme_user_header', $data);
-        $this->load->view('theme\theme_user_footer');
+        $this->load->view('theme/theme_user_header', $data);
+        if ($this->view_name != NULL) {
+            $this->load->view($this->view_name, $this->set_data);
+        } else {
+            $this->load->view('permission_deny');
+        }
+        $this->load->view('theme/theme_user_footer');
     }
     
     
