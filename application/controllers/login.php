@@ -15,7 +15,13 @@ class login extends CI_Controller {
         if ($this->loginmodel->set_validation() && $this->form_validation->run()) {
             $form_data = $this->loginmodel->get_post();
             if ($this->loginmodel->login($form_data)) {
-                redirect('home');
+                if ($_SESSION['IsAdmin'] == TRUE)
+                {
+                    redirect('http://localhost/kw_smart_admin/');
+                }  else {
+                    redirect('home');
+                }
+                    
             }
         }
         $data['form_action'] = form_open('login', array('class' => 'form-signin'));

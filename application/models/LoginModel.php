@@ -43,19 +43,19 @@ Class LoginModel extends CI_Model {
         $session = array();
 
         if ($data['username'] == 'admin' && $data['password'] == 'admin') {
-            $session['user_id']=99999;
+            $session['MemberID']=99999;
             $session['username'] = 'Admin';
             $session['login'] = TRUE;
-            $session['is_admin']=TRUE;
+            $session['IsAdmin']=TRUE;
             $session['permittion'] = "ALL";
             
             $this->session->set_userdata($session);
             return TRUE;
         }  else if ($data['username'] == 'user' && $data['password'] == 'user') {
-            $session['user_id']=99999;
+            $session['MemberID']=99999;
             $session['username'] = 'Admin';
             $session['login'] = TRUE;
-             $session['is_admin']=FALSE;
+             $session['IsAdmin']=FALSE;
             $session['permittion'] = "ALL";
             $this->session->set_userdata($session);
             return TRUE;
