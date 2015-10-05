@@ -60,8 +60,44 @@
                     </div>
                 </div>
             <?php } ?>
-            <div class="col-lg-8 col-md-8 col-sm-8">
-
+            <div class="col-lg-8 col-md-8 col-sm-8" style="margin-top:60px;w">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">ยินดีต้อนรับ</h3>
+                    </div>
+                    <div class="panel-body">
+                         &nbsp; ยินดีต้อนรับเข้าสู่ระบบเเจ้งซ่อมบำรุงคอมพิวเตอร์โรงเรียนกัลยาณวัตร จังหวัดขอนแก่น เป็นระบบที่ให้บริการความสะดวกสบายในการแจ้งซ่อมคอมพิวเตอร์หรืออุปกรณ์โสตทัศนูปโภคภายในโรงเรียนกัลยาณวัตร
+                        <br />
+                            <strong>บริการภายในระบบ :</strong>
+                            <ul>
+                                <li>
+                                    แจ้งซ่อมคอมพิวเตอร์สะดวกสะบาย
+                                </li>
+                                <li>
+                                    ดำเนินการซ่อมรวดเร็ว ทันใจอย่างมีประสิทธิภาพ
+                                </li>
+                                <li>
+                                    สามารถติดตามผลการซ่อมภายหลังได้
+                                </li>                            
+                            </ul>
+                    </div>                    
+                </div>
+                <div class="panel panel-success">
+                        <div class="panel-body">
+                           <strong>การลงชื่อเข้าสู่ระบบ :</strong>
+                            <ul>
+                                <li>
+                                    ชื่อผู้ใช้ สามารถใช้รหัสประจำตัวนักเรียน/ครู
+                                </li>
+                                <li>
+                                    ชื่อผู้ใช้สามารถใช้เลขบัตรประจำตัวประชาชน
+                                </li>
+                                <li>
+                                    รหัสผ่านเริ่มต้น คือ 1234 
+                                </li>
+                            </ul>
+                        </div>
+                    </div>               
             </div>
             <div class="col-lg-4 col-md-4 col-sm-4">
 
