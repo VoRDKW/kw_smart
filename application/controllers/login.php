@@ -10,7 +10,6 @@ class login extends CI_Controller {
         $this->load->library('form_validation');
         $this->load->helper('form');
     }
-
     public function index() {
         if ($this->loginmodel->set_validation() && $this->form_validation->run()) {
             $form_data = $this->loginmodel->get_post();

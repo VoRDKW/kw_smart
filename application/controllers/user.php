@@ -23,7 +23,24 @@ class user extends CI_Controller {
     }
 
     public function edit() {
+        $data_debug = array();
         
+        if($this->usermodel->set_validation() && $this->form_validation->run()){
+            $data_debug['form_data'] = $this->usermodel->get_post_form_edit();
+        }
+        
+        $data = array(
+            'page_title' => 'แก้ไขผู้ใช้งาน',
+            'page_title_small' => '',
+            'form' => $this->usermodel->set_form_edit(),
+                //'' => ,
+                //'previous_page' => 'route/time/' . $rcode . '/' . $vtid,
+                //'next_page' => 'fares/add/' . $rcode . '/' . $vtid,
+        );
+        
+        $this->TemplateModel->set_Debug($data_debug);
+        $this->TemplateModel->set_Content('users/user_form_view', $data);
+        $this->TemplateModel->ShowTemplate();
     }
 
 }
