@@ -2,9 +2,19 @@
 
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
+
 Class UserModel extends CI_Model {
     
-     public function set_form_edit() {
+    public function get_user() {
+       $this->db->where('MemberID',$this->session->userdata('MemberID'));
+       $db = $this->db->get('tbm_user');
+       $rs = $query->db->row_result();
+       
+       return $rs;
+       
+    }
+    
+    public function set_form_edit() {
 
         $i_PersonalID = array(
             'name' => 'PersonalID',
@@ -95,7 +105,8 @@ Class UserModel extends CI_Model {
         );
         return array("user" => $form_data);
     }
- public function set_validation() {
+
+    public function set_validation() {
         $this->form_validation->set_rules('PersonalID', 'รหัสประจำตัวประชาชน', 'trim|required');
 //        $this->form_validation->set_rules('Usename', 'ชื่อผู้ใช้', 'trim|required');
 //        $this->form_validation->set_rules('Password', 'รหัสผ่าน', 'trim|required');
@@ -109,4 +120,3 @@ Class UserModel extends CI_Model {
     }
     
 }
-

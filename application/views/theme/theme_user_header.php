@@ -85,7 +85,7 @@
                                     <h5><strong>Personal Bio : </strong></h5>
                                     Anim pariatur cliche reprehen derit.
                                     <hr />
-                                    <a href="profile.html" class="btn btn-info btn-sm">ข้อมูลผู้ใช้</a>&nbsp; 
+                                    <a href="<?= base_url('user')?>" class="btn btn-info btn-sm">ข้อมูลผู้ใช้</a>&nbsp; 
                                     <a href="login.html" class="btn btn-danger btn-sm">ออกจากระบบ</a>
                                 </div>
                             </li>
@@ -105,11 +105,11 @@
                     </button>                      
                 </div>
                 <div class="row">                  
-                    <div class="col-md-12">
+                    <div class="container">
                         <div class="navbar-collapse collapse">                            
                             <ul id="menu-top" class="nav navbar-nav navbar-right">
-                                <li id="btnHome"><a class="menu-top-active" href="index.html">หน้าหลัก</a></li>
-                                <li id="btnMaintenance"><a href="form-input.html">ซ่อมบำรุงคอมพิวเตอร์</a></li>
+                                <li id="btnHome"><a class="menu-top-active" href="<?=  base_url("home")?>">หน้าหลัก</a></li>
+                                <li id="btnMaintenance"><a href="<?=  base_url("maintenance")?>">ซ่อมบำรุงคอมพิวเตอร์</a></li>
                                 <!--<li id="btnHistrory"><a href="myjob.html">ประวัติแจ้งซ่อม</a></li>-->                   
                             </ul>
                         </div>

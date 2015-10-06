@@ -1,3 +1,15 @@
+<!-- CONTENT-WRAPPER SECTION END-->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    &copy; 2015 YourCompany | By : <a href="http://www.designbootstrap.com/" target="_blank">DesignBootstrap</a>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+<!-- FOOTER SECTION END-->
 <div class="modal fade bs-example-modal-sm" id="confirm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">

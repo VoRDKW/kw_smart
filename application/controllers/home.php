@@ -15,5 +15,12 @@ class home extends CI_Controller {
         $this->TemplateModel->set_Content('home_view', $data);
         $this->TemplateModel->ShowTemplate();
     }
+    public function form_input()
+    {
+        $data = array();
+        //       this->m_template->set_Debug($c_data);
+        $this->TemplateModel->set_Content('home_view', $data);
+        $this->TemplateModel->ShowTemplate();
+    }
 }
 

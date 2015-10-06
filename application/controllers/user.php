@@ -19,7 +19,20 @@ class user extends CI_Controller {
     }
 
     public function index() {
+        $data_debug = array();
+                     
+        $data = array(
+            'page_title' => 'แก้ไขผู้ใช้งาน',
+            'page_title_small' => '',
+            'data' => $this->usermodel->set_form_edit(),
+                //'' => ,
+                //'previous_page' => 'route/time/' . $rcode . '/' . $vtid,
+                //'next_page' => 'fares/add/' . $rcode . '/' . $vtid,
+        );
         
+        $this->TemplateModel->set_Debug($data_debug);
+        $this->TemplateModel->set_Content('users/user_detail_view', $data);
+        $this->TemplateModel->ShowTemplate();
     }
 
     public function edit() {
@@ -42,5 +55,6 @@ class user extends CI_Controller {
         $this->TemplateModel->set_Content('users/user_form_view', $data);
         $this->TemplateModel->ShowTemplate();
     }
+    
 
 }

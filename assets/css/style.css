@@ -51,12 +51,12 @@ body {
     margin-bottom: 40px;
 }
 
-.btn {
+/*.btn {
     border-radius: 0px;
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
 }
-
+*/
 .progress {
     height: 8px;
     border-radius: 0px;
