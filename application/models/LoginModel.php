@@ -2,9 +2,22 @@
 
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
+
 Class LoginModel extends CI_Model {
 
-   
+    private function get_user_login($user,$pass) {
+        $this->db->select("*");
+        $this->db->where("(PersonalID = 'PersonalID' OR Email = '$user' "
+                . "OR UserName = '$user' OR MobilePhone ='$user')");
+        if ($pass != NULL) {
+            $this->db->where('Password', $pass);
+        }
+        $query = $this->db->get('tbm_user');
+        $users = $query->row_array();
+        return $users;
+        
+    }
+
     function set_form() {
         $i_user = array(
             'name' => 'username',
@@ -14,7 +27,7 @@ Class LoginModel extends CI_Model {
             'class' => 'form-control');
         $i_pass = array(
             'name' => 'password',
-            'value' => set_value('password'),
+            //'value' => set_value('password'),
             'placeholder' => 'รหัสผ่าน',
             'class' => 'form-control');
 
@@ -24,13 +37,14 @@ Class LoginModel extends CI_Model {
         );
         return $data;
     }
+
     function set_validation() {
-        $this->form_validation->set_rules('username', 'ชื่อผู้ใช้งาน', 'trim|required');
+        $this->form_validation->set_rules('username', 'ชื่อผู้ใช้งาน', 'trim|required|callback_username_check');
         $this->form_validation->set_rules('password', 'รหัสผ่าน', 'trim|required');
         return TRUE;
     }
 
-     function get_post() {
+    function get_post() {
         $get_page_data = array(
             'username' => $this->input->post('username'),
             'password' => $this->input->post('password')
@@ -38,42 +52,64 @@ Class LoginModel extends CI_Model {
         return $get_page_data;
     }
 
+    public function check_user($user, $pass = NULL) {
+        $this->db->select("*");
+        $this->db->where("(PersonalID = 'PersonalID' OR Email = '$user' "
+                . "OR UserName = '$user' OR MobilePhone ='$user')");
+        if ($pass != NULL) {
+            $this->db->where('Password', $pass);
+        }
+        $query = $this->db->get('tbm_user');
+        $users = $query->result_array();
+        if (count($users) <= 0) {
+            $rs = FALSE;
+        } else {
+            $rs = TRUE;
+        }
+        return $rs;
+    }
+
     function login($data) {
         //Intial data
         $session = array();
 
-        if ($data['username'] == 'admin' && $data['password'] == 'admin') {
-            $session['MemberID']=99999;
-            $session['username'] = 'Admin';
-            $session['login'] = TRUE;
-            $session['IsAdmin']=TRUE;
+//        if ($data['username'] == 'admin' && $data['password'] == 'admin') {
+//            $session['MemberID'] = 99999;
+//            $session['username'] = 'Admin';
+//            $session['login'] = TRUE;
+//            $session['IsAdmin'] = TRUE;
+//            $session['permittion'] = "ALL";
+//
+//            $this->session->set_userdata($session);
+//            return TRUE;
+//        } else if ($data['username'] == 'user' && $data['password'] == 'user') {
+//            $session['MemberID'] = 99999;
+//            $session['username'] = 'Admin';
+//            $session['login'] = TRUE;
+//            $session['IsAdmin'] = FALSE;
+//            $session['permittion'] = "ALL";
+//            $this->session->set_userdata($session);
+//            return TRUE;
+//        } 
+        $temp = $this->check_user($data['username'], $data['pass']);
+        if ($temp != FALSE) {
+            $user_data = $this->get_user_login($data['username'],$data['password']);
+            if($user_data['PositionID']==1){
+                $IsAdmin = FALSE;
+            }  else {
+                $IsAdmin = TRUE;
+            }
+            $session['MemberID'] = $user_data['MemberID'];
+            $session['username'] = $user_data['username'];
+            $session['IsLogin'] = TRUE;
+            $session['IsAdmin'] = $IsAdmin;
             $session['permittion'] = "ALL";
-            
+//            $this->session->set_userdata($session);
             $this->session->set_userdata($session);
             return TRUE;
-        }  else if ($data['username'] == 'user' && $data['password'] == 'user') {
-            $session['MemberID']=99999;
-            $session['username'] = 'Admin';
-            $session['login'] = TRUE;
-             $session['IsAdmin']=FALSE;
-            $session['permittion'] = "ALL";
-            $this->session->set_userdata($session);
-            return TRUE;
-        } 
-        else {
-//            $temp = $this->check_user($data['user'], $data['pass']);
-//            if ($temp != FALSE) {
-//                $session['username'] = $temp[0]['UserName'];
-//                $session['name'] = $temp[0]['Title'] . $temp[0]['FirstName'] . ' ' . $temp[0]['LastName'];
-//                $session['login'] = TRUE;
-//                $session['permittion'] = $temp[0]['PermissionDetails'];
-//                $this->session->set_userdata($session);
-//                return TRUE;
-//            } else {
-                return FALSE;
-//            }
+        } else {
+            return FALSE;
         }
     }
 
-    
 }

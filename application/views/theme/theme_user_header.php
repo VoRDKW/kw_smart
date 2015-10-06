@@ -86,7 +86,7 @@
                                     Anim pariatur cliche reprehen derit.
                                     <hr />
                                     <a href="<?= base_url('user')?>" class="btn btn-info btn-sm">ข้อมูลผู้ใช้</a>&nbsp; 
-                                    <a href="login.html" class="btn btn-danger btn-sm">ออกจากระบบ</a>
+                                    <a href="<?= base_url('logout')?>"class="btn btn-danger btn-sm">ออกจากระบบ</a>
                                 </div>
                             </li>
                         </ul>
