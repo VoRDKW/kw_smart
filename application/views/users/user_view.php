@@ -1,8 +1,8 @@
-<?php
-
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
+<script>
+    jQuery(document).ready(function ($) {
+        $("#menu-top li").removeAttr('class');
+    });
+</script>
+<div class="container-fluid" style="min-height: 800px;">
+    
+</div>

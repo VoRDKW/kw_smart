@@ -28,7 +28,7 @@ class maintenance extends CI_Controller {
         $data_debug = array(
             'data_job' => $data['data_job']
         );
-        //$this->TemplateModel->set_Debug($data_debug);
+        $this->TemplateModel->set_Debug($data_debug);
         $this->TemplateModel->set_Content('maintenance/maintenance_view', $data);
         $this->TemplateModel->ShowTemplate();
     }

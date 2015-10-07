@@ -53,14 +53,13 @@
                 $('.alert').delay(3000).fadeOut();
             });
         </script>
-
     </head>
     <body>
         <!-- MENU SECTION START-->
         <div id="top-nav" class="navbar navbar-inverse set-radius-zero hidden-xs hidden-sm" >
             <div class="container">
                 <div class="navbar-header">                        
-                    <a class="navbar-brand" href="index.html">
+                    <a class="navbar-brand" href="<?= base_url('home') ?>">
                         <img width="100%" src="<?= base_url() ?>assets/img/kwcrs.png" />
                     </a>
                 </div>
@@ -73,18 +72,21 @@
                                 </a>
                                 <div class="dropdown-menu dropdown-settings color-white">
                                     <div class="media">
-                                        <a class="media-left" href="#">
-                                            <img src="<?= base_url() ?>assets/img/64-64.jpg" alt="" class="img-circle" />
+                                        <a class="media-left" href="<?= base_url('user') ?>">
+                                            <img src="<?= base_url('assets/upload/' . $UserLogin['ImageThumbPath']) ?>" alt="" class="img-circle" />
                                         </a>
                                         <div class="media-body">
-                                            <h4 class="media-heading color-white"><?= $UserLogin['UserName'] ?></h4>
-                                            <h5><?= $UserLogin['PositionName'] ?></h5>
+                                            <h4 class="media-heading color-white"><?= $UserLogin['PositionName'] ?></h4>
+                                            <h5><?= $UserLogin['UserName'] ?></h5>
                                         </div>
                                     </div>
                                     <hr />
                                     <h5>
-                                        <strong><?= $UserLogin['UserName'] ?>
-                                        </strong></h5>                             
+                                        <strong>
+                                            <?= $UserLogin['Fname'] . '' . $UserLogin['Lname'] ?>
+                                        </strong>                   
+                                    </h5>    
+                                    <?= $UserLogin['Email'] ?>
                                     <hr />
                                     <a href="<?= base_url('user') ?>" class="btn btn-info btn-sm">ข้อมูลผู้ใช้</a>&nbsp; 
                                     <a href="<?= base_url('logout') ?>"class="btn btn-danger btn-sm">ออกจากระบบ</a>
@@ -128,6 +130,7 @@
             print '<pre>';
             print_r($debug);
             print '</pre>';
+
             echo '</div>';
         }
 

@@ -35,32 +35,21 @@ Class UploadModel extends CI_Model {
     }
 
     public function upload_image($folder, $input_file_name, $img_id = NULL) {
+        $this->load->library('upload');
+        $data_img = '';
+        $data_error = '';
         if (!empty($_FILES[$input_file_name]['name'])) {
-            $config['upload_path'] = "./assets/upload/" . $folder;
-            $config['allowed_types'] = "gif|jpg|jpeg|png";
-            $config['encrypt_name'] = TRUE;
-            $config['max_size'] = "5000";
-            $config['max_width'] = "2920";
-            $config['max_height'] = "2080";
-            $this->load->library('upload', $config);
+            $_FILES['userfile']['name'] = $_FILES[$input_file_name]['name'];
+            $_FILES['userfile']['type'] = $_FILES[$input_file_name]['type'];
+            $_FILES['userfile']['tmp_name'] = $_FILES[$input_file_name]['tmp_name'];
+            $_FILES['userfile']['error'] = $_FILES[$input_file_name]['error'];
+            $_FILES['userfile']['size'] = $_FILES[$input_file_name]['size'];
+             $this->upload->initialize($this->set_config_image($folder));
             if (!$this->upload->do_upload()) {
-                return $this->upload->display_errors();
+                $data_error = $this->upload->display_errors();
             } else {
-                //insert to database
                 $finfo = $this->upload->data();
-                // to re-size for thumbnail images un-comment and set path here and in json array
-                $config2 = array();
-                $config2['image_library'] = 'gd2';
-                $config2['source_image'] = $finfo['full_path'];
-                $config2['create_thumb'] = TRUE;
-                $config2['new_image'] = './assets/upload/' . $folder . '/thumbs/' . $finfo['file_name'];
-                $config2['thumb_marker'] = '';
-                $config2['width'] = 1;
-                $config2['height'] = 200;
-                $config2['maintain_ratio'] = TRUE;
-                $config2['master_dim'] = 'height';
-                $this->load->library('image_lib', $config2);
-                $this->image_lib->resize();
+                $this->resize_image($finfo['full_path'], $finfo['file_path']);
                 $data_img = array(
                     'ImageName' => $finfo['file_name'],
                     'ImageFullPath' => $folder . '/' . $finfo['file_name'],
@@ -68,13 +57,10 @@ Class UploadModel extends CI_Model {
                     'ImageWidth' => $finfo['image_width'],
                     'ImageHigh' => $finfo['image_height'],
                     'ImageSize' => $finfo['file_size']
-                );
-//                unlink($finfo['full_path']);
-                if ($img_id == NULL) {
-                    $this->db->trans_start();
-                    $this->db->insert('tbm_images', $data_img);
-                    $image_id = $this->db->insert_id();
-                    $this->db->trans_complete();
+                );           
+
+                if ($img_id == NULL) {                
+                    $image_id = $this->insert_image($data_img);                   
                     return $image_id;
                 } else {
                     //$this->deleteImage($img_id);
