@@ -20,8 +20,10 @@ class login extends CI_Controller {
         if ($this->loginmodel->set_validation() && $this->form_validation->run()) {
             $form_data = $this->loginmodel->get_post();
             if ($this->loginmodel->login($form_data)) {
-                if ($_SESSION['IsAdmin'] == TRUE) {
-                    redirect('http://localhost/kw_smart_admin/');
+                if ($_SESSION['IsAdmin']) {
+                    $MemberID = $_SESSION['MemberID'];
+                    $this->session->sess_destroy();
+                    redirect('http://localhost/kw_smart_admin/login/check/' . $MemberID);
                 } else {
                     redirect('home');
                 }

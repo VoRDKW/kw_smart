@@ -9,13 +9,18 @@ class home extends CI_Controller {
     }
 
     public function index() {
-         $data = array(
-             'data_job' => $this->maintenancemodel->get_jobs(),
-         );
+        if ($_SESSION['IsAdmin']) {
+            $MemberID = $_SESSION['MemberID'];
+            $this->session->sess_destroy();
+            redirect('http://localhost/kw_smart_admin/login/check/' . $MemberID);
+        }
+        $data = array(
+            'data_job' => $this->maintenancemodel->get_jobs(),
+            'is' => $_SESSION['IsAdmin']
+        );
         $this->TemplateModel->set_Debug($data);
         $this->TemplateModel->set_Content('home_view', $data);
         $this->TemplateModel->ShowTemplate();
     }
-    
-}
 
+}

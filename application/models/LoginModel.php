@@ -5,7 +5,7 @@ if (!defined('BASEPATH'))
 
 Class LoginModel extends CI_Model {
 
-    private function get_user_login($user,$pass) {
+    private function get_user_login($user, $pass) {
         $this->db->select("*");
         $this->db->where("(PersonalID = 'PersonalID' OR Email = '$user' "
                 . "OR UserName = '$user' OR MobilePhone ='$user')");
@@ -15,7 +15,18 @@ Class LoginModel extends CI_Model {
         $query = $this->db->get('tbm_user');
         $users = $query->row_array();
         return $users;
-        
+    }
+
+    public function check_admin($MemberID) {
+        $this->db->where('PositionID', 2);
+        $this->db->where('MemberID', $MemberID);
+        $query = $this->db->get('tbm_user');
+        $users = $query->row_array();
+        if ($users != NULL) {
+            return TRUE;
+        } else {
+            return FALSE;
+        }
     }
 
     function set_form() {
@@ -93,18 +104,13 @@ Class LoginModel extends CI_Model {
 //        } 
         $temp = $this->check_user($data['username'], $data['pass']);
         if ($temp != FALSE) {
-            $user_data = $this->get_user_login($data['username'],$data['password']);
-            if($user_data['PositionID']==1){
-                $IsAdmin = FALSE;
-            }  else {
-                $IsAdmin = TRUE;
-            }
+            $user_data = $this->get_user_login($data['username'], $data['password']);
+
             $session['MemberID'] = $user_data['MemberID'];
             $session['username'] = $user_data['username'];
             $session['IsLogin'] = TRUE;
-            $session['IsAdmin'] = $IsAdmin;
+            $session['IsAdmin'] = $this->check_admin($user_data['MemberID']);
             $session['permittion'] = "ALL";
-//            $this->session->set_userdata($session);
             $this->session->set_userdata($session);
             return TRUE;
         } else {
