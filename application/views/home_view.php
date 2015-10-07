@@ -1,10 +1,17 @@
 <div class="content-wrapper">
+<<<<<<< HEAD
     <div class="container">
         <div class="row">
             <h4 class="page-head-line">งานแจ้งซ่อมบำรุงคอมพิวเตอร์</h4>
             <div>
                 <?php 
                 foreach ($data_job as $job) {
+=======
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h4 class="page-head-line">รายการการแจ้งซ่อมของฉัน<p style="float:right"><a href="<?= base_url('maintenance')?>" class="btn btn-md btn-danger pull-right">>> แจ้งซ่อม <<</a></p></h4>
+>>>>>>> origin/master
                     
                 }
                 ?>
