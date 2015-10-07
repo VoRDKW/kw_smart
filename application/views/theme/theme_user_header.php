@@ -34,7 +34,7 @@
 
         <script type="text/javascript">
             $(window).scroll(function () {
-                if ($(this).scrollTop() > 150) { //use `this`, not `document`
+                if ($(this).scrollTop() > 100) { //use `this`, not `document`
                     $('#top-nav').fadeOut();
                     $('#fix-menu').addClass('navbar-fixed-top');
                     $(".pace-progress").css("margin-top", "58px");
@@ -77,16 +77,17 @@
                                             <img src="<?= base_url() ?>assets/img/64-64.jpg" alt="" class="img-circle" />
                                         </a>
                                         <div class="media-body">
-                                            <h4 class="media-heading color-white">Jhon Deo Alex </h4>
-                                            <h5>Developer & Designer</h5>
+                                            <h4 class="media-heading color-white"><?= $UserLogin['UserName'] ?></h4>
+                                            <h5><?= $UserLogin['PositionName'] ?></h5>
                                         </div>
                                     </div>
                                     <hr />
-                                    <h5><strong>Personal Bio : </strong></h5>
-                                    Anim pariatur cliche reprehen derit.
+                                    <h5>
+                                        <strong><?= $UserLogin['UserName'] ?>
+                                        </strong></h5>                             
                                     <hr />
-                                    <a href="<?= base_url('user')?>" class="btn btn-info btn-sm">ข้อมูลผู้ใช้</a>&nbsp; 
-                                    <a href="<?= base_url('logout')?>"class="btn btn-danger btn-sm">ออกจากระบบ</a>
+                                    <a href="<?= base_url('user') ?>" class="btn btn-info btn-sm">ข้อมูลผู้ใช้</a>&nbsp; 
+                                    <a href="<?= base_url('logout') ?>"class="btn btn-danger btn-sm">ออกจากระบบ</a>
                                 </div>
                             </li>
                         </ul>
@@ -97,7 +98,7 @@
         <!-- LOGO HEADER END-->
         <section id="fix-menu" class="menu-section">
             <div class="container-fluid">
-                  <div class="navbar-header">
+                <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
@@ -106,10 +107,13 @@
                 </div>
                 <div class="row">                  
                     <div class="container">
-                        <div class="navbar-collapse collapse">                            
+                        <div id="TopMenu" class="navbar-collapse collapse">                            
                             <ul id="menu-top" class="nav navbar-nav navbar-right">
-                                <li id="btnHome"><a class="menu-top-active" href="<?=  base_url("home")?>">หน้าหลัก</a></li>
-                                <li id="btnMaintenance"><a href="<?=  base_url("maintenance")?>">ซ่อมบำรุงคอมพิวเตอร์</a></li>
+                                <li id="btnHome" class="menu-top-active">
+                                    <a  href="<?= base_url("home") ?>">หน้าหลัก</a></li>
+                                <li id="btnMaintenance">
+                                    <a href="<?= base_url("maintenance") ?>">ซ่อมบำรุงคอมพิวเตอร์</a>
+                                </li>
                                 <!--<li id="btnHistrory"><a href="myjob.html">ประวัติแจ้งซ่อม</a></li>-->                   
                             </ul>
                         </div>

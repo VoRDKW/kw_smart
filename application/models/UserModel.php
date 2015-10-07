@@ -4,16 +4,17 @@ if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
 Class UserModel extends CI_Model {
-    
+
     public function get_user() {
-       $this->db->where('MemberID',$this->session->userdata('MemberID'));
-       $db = $this->db->get('tbm_user');
-       $rs = $query->db->row_result();
-       
-       return $rs;
-       
+        $this->db->join('tbm_images', 'tbm_user.ImageUserID = tbm_images.ImageID', 'left');
+        $this->db->join('tbm_positions', 'tbm_user.PositionID = tbm_positions.PositionID', 'left');
+        $this->db->where('MemberID', $this->session->userdata('MemberID'));
+        $query = $this->db->get('tbm_user');
+        $rs = $query->db->row_result();
+
+        return $rs;
     }
-    
+
     public function set_form_edit() {
 
         $i_PersonalID = array(
@@ -118,5 +119,5 @@ Class UserModel extends CI_Model {
 //        $this->form_validation->set_rules('ImageName', 'รูปภาพ', 'trim');
         return TRUE;
     }
-    
+
 }

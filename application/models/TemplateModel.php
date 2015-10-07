@@ -47,6 +47,15 @@ Class TemplateModel extends CI_Model {
         return $this->session->userdata('IsLogin');
     }
 
+    function get_data_user_login() {
+        $this->db->join('tbm_images', 'tbm_user.ImageUserID = tbm_images.ImageID', 'left');
+         $this->db->join('tbm_positions', 'tbm_user.PositionID = tbm_positions.PositionID', 'left');
+        $this->db->where('MemberID', $this->session->userdata('MemberID'));
+        $query = $this->db->get('tbm_user');
+        $rs = $query->row_array();
+        return $rs;
+    }
+
     function ShowTemplate() {
         //--- Load language --//
         $site_lang = $this->session->userdata('site_lang');
@@ -71,6 +80,7 @@ Class TemplateModel extends CI_Model {
         $data['debug'] = $this->debud_data;
         $data['alert'] = $this->check_Alert();
         $data['real_alert'] = $this->check_RealAlert();
+        $data['UserLogin'] = $this->get_data_user_login();
         $IsLogin = $this->check_login();
         if ($IsLogin != NULL && $IsLogin == TRUE) {
             $this->load->view('theme/theme_user_header', $data);
@@ -84,4 +94,5 @@ Class TemplateModel extends CI_Model {
             redirect('login');
         }
     }
+
 }
