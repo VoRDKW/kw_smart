@@ -2,7 +2,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <h4 class="page-head-line">รายการการแจ้งซ่อมของฉัน<p style="float:right"><a href="form-input.html" class="btn btn-md btn-danger pull-right">>> แจ้งซ่อม <<</a></p></h4>
+                    <h4 class="page-head-line">รายการการแจ้งซ่อมของฉัน<p style="float:right"><a href="<?= base_url('maintenance')?>" class="btn btn-md btn-danger pull-right">>> แจ้งซ่อม <<</a></p></h4>
                     
                     <div class="panel panel-default">
                         <div class="panel-body">

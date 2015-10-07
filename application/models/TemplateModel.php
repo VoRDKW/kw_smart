@@ -5,7 +5,7 @@ if (!defined('BASEPATH'))
 
 Class TemplateModel extends CI_Model {
 
-    private $title = 'KW Smart App';
+    private $title = 'KW | Smart App';
     private $view_name = NULL;
     private $real_alert = NULL;
     private $set_data = NULL;
