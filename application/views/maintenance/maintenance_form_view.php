@@ -96,9 +96,9 @@
                         <?php echo form_error('Floor', '<font color="error">', '</font>'); ?> 
                     </div>
                     <label class="col-sm-1 control-label">ห้อง:</label>
-                    <div class="col-sm-2 <?= (form_error('RoomNo')) ? 'has-error' : '' ?>">
+                    <div class="col-sm-2 <?= (form_error('RoomID')) ? 'has-error' : '' ?>">
                         <?= $form['RoomID'] ?>
-                        <?php echo form_error('RoomNo', '<font color="error">', '</font>'); ?> 
+                        <?php echo form_error('RoomID', '<font color="error">', '</font>'); ?> 
                     </div>
             </div>            
             <div class="form-group <?= (form_error('NumberKWDevice')) ? 'has-error' : '' ?>">

@@ -65,7 +65,7 @@
                                 <tr>
                                     <td class="text-center" colspan="6">- คุณยังไม่มีงานแจ้งซ่อมใดๆ -
                                         <a href="<?= base_url('maintenance/add') ?>" class="btn btn-md btn-danger">
-                                            <i class="fa fa-fw fa-ambulance"></i>>> แจ้งซ่อม <<
+                                            >> <i class="fa fa-fw fa-ambulance"></i> แจ้งซ่อม <<
                                         </a>
                                     </td> 
                                 </tr>
