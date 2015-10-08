@@ -160,8 +160,10 @@ Class DatetimeModel extends CI_Model {
         }
     }
 
-    public function DateThai($strDate) {
+    public function DateThai($strDate = NULL) {
         if ($strDate == NULL) {
+            return '-';
+        } elseif ($strDate == '0000-00-00') {
             return '-';
         } else {
             $str = explode('-', $strDate);
@@ -187,7 +189,7 @@ Class DatetimeModel extends CI_Model {
 
     public function DateTimeThai($strDate) {
         if ($strDate == NULL) {
-            return '-';
+            return $this->getDatetimeNowTH();
         } else {
             $date = new DateTime($strDate);
             $strYear = date("Y", strtotime($strDate)) + 543;
