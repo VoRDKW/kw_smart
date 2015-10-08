@@ -5,14 +5,18 @@
   top: 0;
   left: 0;
   height: 3px;
-  margin-top: 181px;
+  margin-top: 40px;
 
   -webkit-transition: width 1s;
   -moz-transition: width 1s;
   -o-transition: width 1s;
   transition: width 1s;
 }
-
+@media(min-width:992px){
+    .pace .pace-progress {
+        margin-top: 181px;
+    }
+}
 .pace-inactive {
   display: none;
 }

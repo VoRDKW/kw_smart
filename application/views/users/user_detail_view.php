@@ -22,15 +22,15 @@
                     <dt>เข้าสู่ระบบล่าสุด :</dt>
                     <dd><?= $data['LastLogin'] ?></dd>                    
                 </dl>
-                <div class="col-md-12">
-                    <a href="<?= base_url('user/edit/') ?>" class="btn btn-warning"><i class="fa fa-lg fa-edit"></i>แก้ไขข้มูลส่วนตัว</a>
-                    <a href="<?= base_url('home') ?>" class="btn btn-default"><i class="fa fa-fw fa-home"></i>กลับหน้าหลัก</a>
-                </div>
             </div>
             <div class="col-md-6">
-                <img height="200" src="<?= base_url('assets/upload/' . $data['ImageThumbPath']) ?>"  class="img-thumbnail">
+                <img height="200" width="auto" src="<?= base_url('assets/upload/' . $data['ImageThumbPath']) ?>"  class="img-thumbnail">
             </div>
-
+            <div class="col-md-12">
+                <a href="<?= base_url('user/edit/') ?>" class="btn btn-warning"><i class="fa fa-lg fa-edit"></i>แก้ไขข้มูลส่วนตัว</a>
+                <a href="<?= base_url('home') ?>" class="btn btn-default"><i class="fa fa-fw fa-home"></i>กลับหน้าหลัก</a>
+            </div>
+            
         </div>
     </div>
 </div>

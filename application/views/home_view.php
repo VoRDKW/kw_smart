@@ -1,23 +1,11 @@
 <div class="content-wrapper">
     <div class="container">
         <div class="row">
-            <h4 class="page-head-line">งานแจ้งซ่อมบำรุงคอมพิวเตอร์</h4>
-            <div>
-                <?php
-                foreach ($data_job as $job) {
-                    ?>
-                
-                
-                
-                    <?php
-                }
-                ?>
-
-            </div>
+            <h4 class="page-head-line">งานแจ้งซ่อมบำรุงคอมพิวเตอร์</h4>       
         </div>
-        <div class="row" hidden="">
+        <div class="row">
             <div class="col-md-12">
-                <h4 class="page-head-line">รายการการแจ้งซ่อมของฉัน<p style="float:right"><a href="form-input.html" class="btn btn-md btn-danger pull-right hidden">>> แจ้งซ่อม <<</a></p></h4>
+<!--                <h4 class="page-head-line">รายการการแจ้งซ่อมของฉัน<p style="float:right"><a href="form-input.html" class="btn btn-md btn-danger pull-right hidden">>> แจ้งซ่อม <<</a></p></h4>-->
 
                 <div class="panel panel-default">
                     <div class="panel-body">
@@ -50,26 +38,56 @@
                                 </div>                                    
                             </form> 
                         </div>
-
                     </div>
                 </div>                    
 
-                <table class="table table-bordered">
-                    <thead class="table table-bordered">
-                    <th class="center" width="5%">ลำดับ</th>
-                    <th class="center" width="20%">รหัสงาน</th>
-                    <th class="center" width="30%">หัวข้อ</th>
-                    <th class="center" width="20%">วันที่แจ้งซ่อม</th>
-                    <th class="center" width="20%">สถานะ</th>
-                    <th class="center" width="5%"></th>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="text-center" colspan="6">- คุณยังไม่มีงานแจ้งซ่อมใดๆ -</td> 
-                        </tr>
-                    </tbody>
-                </table>
             </div>
-        </div>            
+        </div>     
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-success">
+                    <div class="panel-heading">
+                        <div class="panel-title">รายการการแจ้งซ่อมของฉัน</div>
+                    </div>                            
+                    <table class="table">
+                        <thead class="table table-bordered">
+                        <th width="15%">รหัสงาน</th>
+                        <th width="40%">หัวข้อ</th>
+                        <th width="20%">วันที่แจ้งซ่อม</th>
+                        <th width="20%">สถานะ</th>
+                        <th width="5%"></th>
+                        </thead>
+                        <tbody>
+
+                            <?php
+                            if (count($data_job) == 0) {
+                                ?>
+                                <tr>
+                                    <td class="text-center" colspan="6">- คุณยังไม่มีงานแจ้งซ่อมใดๆ -
+                                        <a href="<?= base_url('maintenance/add') ?>" class="btn btn-md btn-danger">
+                                            <i class="fa fa-fw fa-ambulance"></i>>> แจ้งซ่อม <<
+                                        </a>
+                                    </td> 
+                                </tr>
+                                <?php
+                            } else {
+                                foreach ($data_job as $job) {                                  
+                                    ?>
+                                    <tr>
+                                        <td><?= $job['JobID'] ?></td>
+                                        <td><?= $job['JobName'] ?></td>
+                                        <td><?= $job['CreateDate'] ?></td>
+                                        <td><?= $job['JobStatusID'] ?></td>
+                                        <td><a href="<?= base_url("maintenance/edit/" . $job['JobID']) ?>"><i class="fa fa-pencil"></i></a></td>
+                                    </tr>
+                                    <?php
+                                }
+                            }
+                            ?>
+                        </tbody>
+                    </table>                     
+                </div>
+            </div>
+        </div>
     </div>
 </div>

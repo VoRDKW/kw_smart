@@ -14,29 +14,27 @@
         <?= $form['form_open'] ?>
         <div class="col-md-8">
             <div class="form-group <?= (form_error('PersonalID')) ? 'has-error' : '' ?>">
-                <label class="col-sm-3 control-label">เลขที่บัตรประชาชน</label>
-                <div class="col-sm-8">            
+                <label class="col-sm-3 control-label">เลขที่บัตรประชาชน :</label>
+                <div class="col-sm-5">            
                     <?= $form['PersonalID'] ?>
                     <?php echo form_error('PersonalID', '<font color="error">', '</font>'); ?>
                 </div>
             </div>
-            <div class="form-group <?= (form_error('UserName')) ? 'has-error' : '' ?>">
+            <div class="form-group ">
                 <label class="col-sm-3 control-label">ชื่อผู้ใช้ :</label>
-                <div class="col-sm-5">
+                <div class="col-sm-3 <?= (form_error('UserName')) ? 'has-error' : '' ?>">
                     <?= $form['UserName'] ?>
                     <?php echo form_error('UserName', '<font color="error">', '</font>'); ?>
                 </div>
-            </div>
-            <div class="form-group <?= (form_error('Password')) ? 'has-error' : '' ?>">
-                <label class="col-sm-3 control-label">รหัสผ่าน :</label>
-                <div class="col-sm-4">
+                <label class="col-sm-2 control-label">รหัสผ่าน :</label>
+                <div class="col-sm-4 <?= (form_error('Password')) ? 'has-error' : '' ?>"">
                     <?= $form['Password'] ?>
                     <?php echo form_error('Password', '<font color="error">', '</font>'); ?>
                 </div>
-            </div>
+            </div>           
             <div class="form-group">
-                <label class="col-sm-2 control-label">ชื่อ :</label>
-                <div class="col-sm-4 <?= (form_error('Fname')) ? 'has-error' : '' ?>">
+                <label class="col-sm-3 control-label">ชื่อ :</label>
+                <div class="col-sm-3 <?= (form_error('Fname')) ? 'has-error' : '' ?>">
                     <?= $form['Fname'] ?>
                     <?php echo form_error('Fname', '<font color="error">', '</font>'); ?>
                 </div>
@@ -48,7 +46,7 @@
             </div>
             <div class="form-group <?= (form_error('MobilePhone')) ? 'has-error' : '' ?>">
                 <label class="col-sm-3 control-label">เบอร์โทรศัพท์ :</label>
-                <div class="col-sm-6">
+                <div class="col-sm-3">
                     <?= $form['MobilePhone'] ?>
                     <?php echo form_error('MobilePhone', '<font color="error">', '</font>'); ?>
                 </div>
