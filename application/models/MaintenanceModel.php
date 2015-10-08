@@ -12,11 +12,24 @@ Class MaintenanceModel extends CI_Model {
         $this->load->model('datetimemodel');
     }
 
+    public function set_data_view() {
+        $rs = array();
+        $Jobs = $this->get_jobs();
+        foreach ($Jobs as $Job) {
+            $job_id = $Job['JobID'];
+            $Job['Images'] = $this->imagemodel->get_job_image($job_id);
+            $Job['CreateDate'] = $this->datetimemodel->DateTimeThai($Job['CreateDate']);
+            array_push($rs, $Job);
+        }
+        return $rs;
+    }
+    
     public function get_jobs($JobID = NULL) {
         $this->db->select('*,tbm_jobs.Note as Note');
         $this->db->join('tbm_room', 'tbm_room.RoomID=tbm_jobs.RoomID', 'LEFT');
         $this->db->join('building_has_room', 'tbm_room.RoomID = building_has_room.RoomID', 'LEFT');
         $this->db->join('tbm_building', 'tbm_building.BuildingID = building_has_room.BuildingID', 'LEFT');
+        $this->db->join('tbm_job_status', 'tbm_job_status.JobStatusID = tbm_jobs.JobStatusID', 'LEFT');
         $this->db->where('tbm_jobs.CreateBy', $this->session->userdata('MemberID'));
         $query = $this->db->get('tbm_jobs');
 
