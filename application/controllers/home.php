@@ -6,6 +6,7 @@ class home extends CI_Controller {
         parent::__construct();
         $this->load->model('loginmodel');
         $this->load->model('maintenancemodel');
+        $this->load->model('imagemodel');
     }
 
     public function index() {
@@ -15,7 +16,7 @@ class home extends CI_Controller {
             redirect('http://localhost/kw_smart_admin/login/check/' . $MemberID);
         }
         $data = array(
-            'data_job' => $this->maintenancemodel->get_jobs(),
+            'data_job' => $this->maintenancemodel->set_data_view(),
             'is' => $_SESSION['IsAdmin']
         );
         $this->TemplateModel->set_Debug($data);

@@ -17,10 +17,17 @@
     <div class="row">
         <?php
         foreach ($data_job as $job) {
+            $JobStatusID = $job['JobStatusID'];
+            if ($JobStatusID == 1) {
+                $class = "panel-info";
+            } else {
+                $class = "panel-default";
+            }
             ?>
-            <div class="panel panel-default">
+            <div class="panel <?= $class ?>">
                 <div class="panel-heading">
                     หัวข้อ :&nbsp; <?= $job['JobName'] ?>
+                    <p class="pull-right"><?= $job['JobStatusName'] ?></p>
                 </div>
                 <div class="panel-body">
                     <div class="col-md-8">
@@ -37,7 +44,16 @@
                             <dd><?= $job['JobName'] ?></dd>                        
                         </dl>
                     </div>
-                    
+                    <div class="col-md-4">
+                        <?php
+                        foreach ($job['Images'] as $image) {
+                            ?>
+                            <img src="<?= base_url('assets/upload/' . $image['ImageThumbPath']) ?>" alt="" class="img-thumbnail" />
+                            <?php
+                        }
+                        ?>
+                    </div>
+
 
                     <div class="col-md-12">
                         <a href="<?= base_url("maintenance/edit/" . $job['JobID']) ?>" class="btn btn-warning">
@@ -48,7 +64,6 @@
                             <i class="fa fa-trash"></i>&nbsp;ยกเลิก
                         </a>
                     </div>
-
                 </div>
             </div>
         <?php } ?>

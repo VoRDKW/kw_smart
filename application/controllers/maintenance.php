@@ -15,13 +15,14 @@ class maintenance extends CI_Controller {
         parent::__construct();
         $this->load->model('maintenancemodel');
         $this->load->model('buildingmodel');
+        $this->load->model('imagemodel');
     }
 
     public function index() {
         $data = array(
             'page_title' => 'ระบบแจ้งซ่อมบำรุงคอมพิวเตอร์',
             'page_title_small' => '',
-            'data_job' => $this->maintenancemodel->get_jobs()
+            'data_job' => $this->maintenancemodel->set_data_view()
                 //'previous_page' => 'route/time/' . $rcode . '/' . $vtid,
                 //'next_page' => 'fares/add/' . $rcode . '/' . $vtid,
         );
