@@ -45,7 +45,7 @@ Class MaintenanceModel extends CI_Model {
     public function insert_job($data) {
         $job_id = $this->gen_job_id();
         $data['JobID'] = $job_id;
-        $data['CreateDate'] = $this->datetimemodel->getDatetimeNowTH();
+        $data['CreateDate'] = $this->datetimemodel->getDatetimeNow();
         $data['CreateBy'] = $this->session->userdata('MemberID');
         $this->db->trans_begin();
         $this->db->insert('tbm_jobs', $data);
