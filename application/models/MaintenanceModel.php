@@ -26,7 +26,7 @@ Class MaintenanceModel extends CI_Model {
     }
     
     public function get_jobs($JobID = NULL) {
-        $this->db->select('*,tbm_jobs.Note as Note');
+        $this->db->select('*,tbm_jobs.Note as Note,tbm_jobs.CreateDate as CreateDate');
         $this->db->join('tbm_room', 'tbm_room.RoomID=tbm_jobs.RoomID', 'LEFT');
         $this->db->join('building_has_room', 'tbm_room.RoomID = building_has_room.RoomID', 'LEFT');
         $this->db->join('tbm_building', 'tbm_building.BuildingID = building_has_room.BuildingID', 'LEFT');
