@@ -19,7 +19,7 @@ class home extends CI_Controller {
             'data_job' => $this->maintenancemodel->set_data_view(),
             'is' => $_SESSION['IsAdmin']
         );
-        $this->TemplateModel->set_Debug($data);
+//        $this->TemplateModel->set_Debug($data);
         $this->TemplateModel->set_Content('home_view', $data);
         $this->TemplateModel->ShowTemplate();
     }

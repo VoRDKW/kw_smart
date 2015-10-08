@@ -19,18 +19,27 @@
         foreach ($data_job as $job) {
             $JobStatusID = $job['JobStatusID'];
             if ($JobStatusID == 1) {
+                $class = "panel-warning";
+                $loadicon = '<i class="fa fa-circle-o-notch fa-spin"></i>';
+            } elseif ($JobStatusID == 2) {
                 $class = "panel-info";
-            } else {
-                $class = "panel-default";
+                $loadicon = '<i class="fa fa-spinner fa-pulse"></i>';
+            } elseif ($JobStatusID == 3) {
+                $class = "panel-success";
+                $loadicon = '<i class="fa fa-check"></i>';
+            } else{
+                $class = "panel-danger";
+                $loadicon = '<i class="fa fa-ban"></i>';
             }
+           
             ?>
             <div class="panel <?= $class ?>">
                 <div class="panel-heading">
                     หัวข้อ :&nbsp; <?= $job['JobName'] ?>
-                    <p class="pull-right"><?= $job['JobStatusName'] ?></p>
+                    <p class="pull-right"><?= $job['JobStatusName']?> <?= $loadicon?></p>
                 </div>
                 <div class="panel-body">
-                    <div class="col-md-8">
+                    <div class="col-md-6" style="margin-right:2px #ddd">
                         <dl class="dl-horizontal">
                             <dt>หมายเลขงาน :</dt>
                             <dd><?= $job['JobID'] ?></dd>
@@ -39,12 +48,18 @@
                             <dt>เลขที่ กว. :</dt>
                             <dd><?= $job['NumberKWDevice'] ?></dd>                                              
                             <dt>สถานะงาน :</dt>
-                            <dd><?= $job['JobName'] ?></dd>
-                            <dt></dt>
-                            <dd><?= $job['JobName'] ?></dd>                        
+                            <dd><?= $job['JobStatusName'] ?></dd>
+                            <dt>อาคาร :</dt>
+                            <dd><?= $job['BuildingNo'] ?></dd>     
+                            <dt>ชั้น :</dt>
+                            <dd><?= $job['Floor'] ?></dd>
+                            <dt>ห้อง :</dt>
+                            <dd><?= $job['RoomNO'] ?></dd>
+                            <dt>ปัญหาที่เเจ้ง :</dt>
+                            <dd><?= $job['BuildingNo'] ?></dd>                          
                         </dl>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-5">
                         <?php
                         foreach ($job['Images'] as $image) {
                             ?>
@@ -53,20 +68,20 @@
                         }
                         ?>
                     </div>
-
-
-                    <div class="col-md-12">
-                        <a href="<?= base_url("maintenance/edit/" . $job['JobID']) ?>" class="btn btn-warning">
+                    <?php
+                     if ($JobStatusID==1){
+                    ?>
+                    <div class="col-md-1">
+                        <a href="<?= base_url("maintenance/edit/" . $job['JobID']) ?>" class="btn btn-warning pull-right">
                             <i class="fa fa-edit"></i>&nbsp;แก้ไข
-                        </a>
-                        &nbsp;
-                        <a href="<?= base_url("maintenance/edit/" . $job['JobID']) ?>" class="btn btn-danger">
-                            <i class="fa fa-trash"></i>&nbsp;ยกเลิก
-                        </a>
+                        </a>                      
                     </div>
+                    <?php
+                     }
+                    ?>                    
                 </div>
             </div>
-        <?php } ?>
+<?php } ?>
     </div>
 
 

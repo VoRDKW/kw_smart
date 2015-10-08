@@ -7,7 +7,7 @@
             <div class="col-md-12">
 <!--                <h4 class="page-head-line">รายการการแจ้งซ่อมของฉัน<p style="float:right"><a href="form-input.html" class="btn btn-md btn-danger pull-right hidden">>> แจ้งซ่อม <<</a></p></h4>-->
 
-                <div class="panel panel-default">
+                <div class="panel panel-default hidden">
                     <div class="panel-body">
                         <div class="col-md-2 col-xs-3">
                             <h5 style="margin-bottom:5px">ค้นหา :</h5>
@@ -50,7 +50,7 @@
                         <div class="panel-title">รายการการแจ้งซ่อมของฉัน</div>
                     </div>                            
                     <table class="table">
-                        <thead class="table table-bordered">
+                        <thead>
                         <th width="15%">รหัสงาน</th>
                         <th width="40%">หัวข้อ</th>
                         <th width="20%">วันที่แจ้งซ่อม</th>
@@ -71,14 +71,25 @@
                                 </tr>
                                 <?php
                             } else {
-                                foreach ($data_job as $job) {                                  
+                                foreach ($data_job as $job) {                                                                    
                                     ?>
                                     <tr>
                                         <td><?= $job['JobID'] ?></td>
                                         <td><?= $job['JobName'] ?></td>
                                         <td><?= $job['CreateDate'] ?></td>
-                                        <td><?= $job['JobStatusID'] ?></td>
-                                        <td><a href="<?= base_url("maintenance/edit/" . $job['JobID']) ?>"><i class="fa fa-pencil"></i></a></td>
+                                        <td><?= $job['JobStatusName'] ?></td>
+                                        <?php
+                                         $JobStatusID = $job['JobStatusID'];
+                                        if ($JobStatusID==1) {                                            
+                                        
+                                        ?>
+                                        <td>
+                                            <a style="color:orange" href="<?= base_url("maintenance/edit/" . $job['JobID']) ?>">
+                                            <i class="fa fa-fw fa-pencil">แก้ไข</i></a>
+                                        </td>
+                                        <?php
+                                        }
+                                        ?>
                                     </tr>
                                     <?php
                                 }
