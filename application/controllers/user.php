@@ -32,7 +32,7 @@ class user extends CI_Controller {
             'data' => $data['data'],
         );
 
-        $this->TemplateModel->set_Debug($data_debug);
+        //$this->TemplateModel->set_Debug($data_debug);
         $this->TemplateModel->set_Content('users/user_detail_view', $data);
         $this->TemplateModel->ShowTemplate();
     }
@@ -72,7 +72,7 @@ class user extends CI_Controller {
                 //'next_page' => 'fares/add/' . $rcode . '/' . $vtid,
         );
 
-        $this->TemplateModel->set_Debug($data_debug);
+        //$this->TemplateModel->set_Debug($data_debug);
         $this->TemplateModel->set_Content('users/user_form_view', $data);
         $this->TemplateModel->ShowTemplate();
     }

@@ -29,7 +29,7 @@ class maintenance extends CI_Controller {
         $data_debug = array(
             'data_job' => $data['data_job']
         );
-        $this->TemplateModel->set_Debug($data_debug);
+        //$this->TemplateModel->set_Debug($data_debug);
         $this->TemplateModel->set_Content('maintenance/maintenance_view', $data);
         $this->TemplateModel->ShowTemplate();
     }
@@ -63,7 +63,7 @@ class maintenance extends CI_Controller {
                 //'previous_page' => 'route/time/' . $rcode . '/' . $vtid,
                 //'next_page' => 'fares/add/' . $rcode . '/' . $vtid,
         );
-        $this->TemplateModel->set_Debug($data_debug);
+        //$this->TemplateModel->set_Debug($data_debug);
         $this->TemplateModel->set_Content('maintenance/maintenance_form_view', $data);
         $this->TemplateModel->ShowTemplate();
     }

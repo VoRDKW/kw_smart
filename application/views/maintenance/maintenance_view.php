@@ -27,16 +27,27 @@
             } elseif ($JobStatusID == 3) {
                 $class = "panel-success";
                 $loadicon = '<i class="fa fa-check"></i>';
-            } else{
+            } else {
                 $class = "panel-danger";
                 $loadicon = '<i class="fa fa-ban"></i>';
             }
-           
+            if (count($job) == 0) {
+            ?>
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        คุณยังไม่มีงานแจ้งซ่อมใดๆ 
+                        <a href="<?= base_url('maintenance/add') ?>" class="btn btn-md btn-danger">
+                            >> <i class="fa fa-fw fa-ambulance"></i> แจ้งซ่อม <<
+                        </a>
+                    </div>
+                </div>
+                <?php
+            }
             ?>
             <div class="panel <?= $class ?>">
                 <div class="panel-heading">
                     หัวข้อ :&nbsp; <?= $job['JobName'] ?>
-                    <p class="pull-right"><?= $job['JobStatusName']?> <?= $loadicon?></p>
+                    <p class="pull-right"><?= $job['JobStatusName'] ?> <?= $loadicon ?></p>
                 </div>
                 <div class="panel-body">
                     <div class="col-md-6" style="margin-right:2px #ddd">
@@ -69,19 +80,19 @@
                         ?>
                     </div>
                     <?php
-                     if ($JobStatusID==1){
-                    ?>
-                    <div class="col-md-1">
-                        <a href="<?= base_url("maintenance/edit/" . $job['JobID']) ?>" class="btn btn-warning pull-right">
-                            <i class="fa fa-edit"></i>&nbsp;แก้ไข
-                        </a>                      
-                    </div>
-                    <?php
-                     }
+                    if ($JobStatusID == 1) {
+                        ?>
+                        <div class="col-md-1">
+                            <a href="<?= base_url("maintenance/edit/" . $job['JobID']) ?>" class="btn btn-warning pull-right">
+                                <i class="fa fa-edit"></i>&nbsp;แก้ไข
+                            </a>                      
+                        </div>
+                        <?php
+                    }
                     ?>                    
                 </div>
             </div>
-<?php } ?>
+        <?php } ?>
     </div>
 
 

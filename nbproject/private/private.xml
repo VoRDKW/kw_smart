@@ -3,8 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Applications/XAMPP/xamppfiles/htdocs/kw_smart/application/views/maintenance/maintenance_view.php</file>
-            <file>file:/Applications/XAMPP/xamppfiles/htdocs/kw_smart/application/views/theme/theme_user_header.php</file>
+            <file>file:/C:/xampp/htdocs/kw_smart/application/controllers/maintenance.php</file>
+            <file>file:/C:/xampp/htdocs/kw_smart/application/views/maintenance/maintenance_view.php</file>
+            <file>file:/C:/xampp/htdocs/kw_smart/application/models/MaintenanceModel.php</file>
+            <file>file:/C:/xampp/htdocs/kw_smart/application/views/users/user_view.php</file>
+            <file>file:/C:/xampp/htdocs/kw_smart/application/views/home_view.php</file>
         </group>
     </open-files>
 </project-private>
